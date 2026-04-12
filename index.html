@@ -1,0 +1,26 @@
+<audio id="hover-sfx" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+<audio id="click-sfx" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+
+<!DOCTYPE html>
+<html lang="en">
+<div class="p5-wrapper">
+
+    <main class="content">
+        <div class="name-card">
+            <h1 class="glitch-text">VINCENT RABOT</h1>
+        </div>
+
+        <nav class="menu">
+            <button class="p5-btn" data-bg="shards" onClick="showPopup('aboutme')">ABOUT ME</button>
+            <button class="p5-btn" data-bg="stripes" onClick="showPopup('projects')">PROJECTS</button>
+            <button class="p5-btn" data-bg="shards" onClick="showPopup('skills')">SKILLS</button>
+        </nav>
+    </main>
+
+    <div id="popup-overlay" class="overlay" onClick="hidePopup()">
+        <div class="popup-window" onClick="event.stopPropagation()">
+            <div id="popup-content"></div>
+            <button class="close-btn" onClick="hidePopup()">CLOSE</button>
+        </div>
+    </div>
+</div>
