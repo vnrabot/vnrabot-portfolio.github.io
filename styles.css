@@ -28,6 +28,13 @@ body::before {
     pointer-events: none;
 }
 
+body {
+    background: var(--p5-black);
+    color: var(--p5-white);
+    font-family: 'Impact', sans-serif;
+    overflow: hidden;
+}
+
 .p5-container {
     display: flex;
     flex-direction: column;
