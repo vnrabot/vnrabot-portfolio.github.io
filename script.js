@@ -1,4 +1,3 @@
-// Ensure functions are global so HTML onClick can find them
 window.showPopup = function (type)
 {
     const clickSfx = document.getElementById('click-sfx');

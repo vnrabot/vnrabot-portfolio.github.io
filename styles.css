@@ -20,13 +20,10 @@
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     z-index: -2;
-    /* Behind everything */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.1s steps(2);
+    /* Snap on/off instead of a slow fade */
     opacity: 0;
     pointer-events: none;
 }
@@ -59,16 +56,22 @@ body {
     overflow: hidden;
 }
 
+body::after {
+    display: none;
+}
+
 .red-slash {
     position: fixed;
     top: 0;
     right: -10%;
     width: 60%;
     height: 100%;
-    background: var(--slash-color);
-    clip-path: var(--slash-path);
+    background: var(--p5-red);
+    clip-path: var(--p5-slash-path, polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%));
     z-index: -1;
-    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    mix-blend-mode: normal;
+    /* Forced normal to prevent color shifting */
+    transition: all 0.15s steps(2);
     /* Snappy P5 transition */
 }
 
@@ -123,6 +126,7 @@ body.bg-shards {
     /* Brighter red */
     --slash-path: polygon(10% 0%, 100% 0%, 90% 100%, 15% 100%);
     /* Sharper tilt */
+    --p5-bg-color: var(--p5-black);
 }
 
 body.bg-stripes {
@@ -193,4 +197,52 @@ body.bg-stripes .red-slash::after {
 
 .menu button:nth-child(odd) {
     margin-right: 40px;
+}
+
+/* SHARDS - Red "Shatter" on Black */
+body.bg-shards::before {
+    opacity: 1;
+    background-color: var(--p5-black);
+    background-image: conic-gradient(from 0deg at 50% 50%, var(--p5-red) 0deg 20deg, transparent 20deg 50deg, var(--p5-red) 50deg 110deg, var(--p5-black) 110deg 200deg, var(--p5-red) 200deg 230deg, transparent 230deg 300deg, var(--p5-red) 300deg 360deg);
+}
+
+body.bg-shards .red-slash {
+    --slash-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    filter: brightness(1.5);
+}
+
+/* STRIPES - High Contrast White/Red */
+body.bg-stripes::before {
+    opacity: 1;
+    background: repeating-linear-gradient(-45deg, var(--p5-red), var(--p5-red) 40px, var(--p5-white) 40px, var(--p5-white) 80px);
+}
+
+body.bg-stripes .red-slash {
+    background: var(--p5-black);
+    --slash-path: polygon(40% 0, 100% 0, 60% 100%, 0% 100%);
+}
+
+/* NOISE - Comic Book Halftone */
+body.bg-noise::before {
+    opacity: 1;
+    background-color: var(--p5-red);
+    background-image: radial-gradient(var(--p5-black) 25%, transparent 26%);
+    background-size: 12px 12px;
+}
+
+body.bg-noise .red-slash {
+    background: var(--p5-white);
+    mix-blend-mode: difference;
+}
+
+/* PULSE - Inverted Minimalist */
+body.bg-pulse::before {
+    opacity: 1;
+    background: radial-gradient(circle, var(--p5-white) 10%, var(--p5-black) 11%, var(--p5-black) 30%, var(--p5-white) 31%, var(--p5-white) 50%, var(--p5-black) 51%);
+    background-size: 300px 300px;
+}
+
+body.bg-pulse .red-slash {
+    background: var(--p5-red);
+    transform: translateX(-50px) skewX(-20deg);
 }
