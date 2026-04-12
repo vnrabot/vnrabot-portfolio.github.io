@@ -1,61 +1,56 @@
-const hoverSfx = document.getElementById('hover-sfx');
-const clickSfx = document.getElementById('click-sfx');
-const overlay = document.getElementById('popup-overlay');
-const content = document.getElementById('popup-content');
-
-// 1. Fundamental: Adding Audio to Interactivity
-document.querySelectorAll('.p5-btn').forEach(btn =>
+// Ensure functions are global so HTML onClick can find them
+window.showPopup = function (type)
 {
-    btn.addEventListener('mouseenter', () =>
-    {
-        hoverSfx.currentTime = 0; // Reset sound to start
-        hoverSfx.play();
-    });
-});
+    const clickSfx = document.getElementById('click-sfx');
+    const overlay = document.getElementById('popup-overlay');
+    const content = document.getElementById('popup-content');
 
-// 2. Fundamental: State Switching (Show/Hide)
-function showPopup(type)
-{
     clickSfx.play();
     overlay.style.display = 'flex';
 
-    if (type === 'projects')
+    if (type === 'aboutme')
     {
-        content.innerHTML = `
-            <h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">MISSION LOG</h1>
-            <p style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</p>
-        `;
+        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">PHANTOM THIEF</h1>
+                             <p style="font-size:1.5rem; margin-top:20px;">Vincent Rabot. Student, Developer, Rebel.</p>`;
+    } else if (type === 'projects')
+    {
+        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">MISSION LOG</h1>
+                             <p style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</p>`;
     } else if (type === 'skills')
     {
-        content.innerHTML = `
-            <h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">STEALTH SKILLS</h1>
-            <p style="font-size:1.5rem; margin-top:20px;">C#, Unity, Cybersecurity, Full-Stack Dev.</p>
-        `;
+        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">STEALTH SKILLS</h1>
+                             <p style="font-size:1.5rem; margin-top:20px;">C#, Unity, Cybersecurity, Full-Stack Dev.</p>`;
     }
-}
+};
 
-function hidePopup()
+window.hidePopup = function ()
 {
-    overlay.style.display = 'none';
-}
+    document.getElementById('popup-overlay').style.display = 'none';
+};
 
-document.querySelectorAll('.p5-btn').forEach(btn =>
+// Initialize listeners after DOM is loaded
+document.addEventListener('DOMContentLoaded', () =>
 {
-    // Existing Hover Sound
-    btn.addEventListener('mouseenter', () =>
-    {
-        hoverSfx.currentTime = 0;
-        hoverSfx.play();
+    const hoverSfx = document.getElementById('hover-sfx');
+    const buttons = document.querySelectorAll('.p5-btn');
 
-        // NEW: Get the style from data-bg and apply to body
-        const bgStyle = btn.getAttribute('data-bg');
-        document.body.classList.add(`bg-${bgStyle}`);
-    });
-
-    // NEW: Remove the style when mouse leaves
-    btn.addEventListener('mouseleave', () =>
+    buttons.forEach(btn =>
     {
-        const bgStyle = btn.getAttribute('data-bg');
-        document.body.classList.remove(`bg-${bgStyle}`);
+        btn.addEventListener('mouseenter', () =>
+        {
+            // Sound
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+
+            // Background Effect
+            const bgStyle = btn.getAttribute('data-bg');
+            if (bgStyle) document.body.classList.add(`bg-${bgStyle}`);
+        });
+
+        btn.addEventListener('mouseleave', () =>
+        {
+            const bgStyle = btn.getAttribute('data-bg');
+            if (bgStyle) document.body.classList.remove(`bg-${bgStyle}`);
+        });
     });
 });
