@@ -3,38 +3,29 @@ const clickSfx = document.getElementById('click-sfx');
 const overlay = document.getElementById('popup-overlay');
 const content = document.getElementById('popup-content');
 
-
-// Adding audio to Interactivity
+// 1. Fundamental: Adding Audio to Interactivity
 document.querySelectorAll('.p5-btn').forEach(btn =>
 {
     btn.addEventListener('mouseenter', () =>
     {
-        hoverSfx.currentTime = 0;
+        hoverSfx.currentTime = 0; // Reset sound to start
         hoverSfx.play();
     });
 });
 
-
-// State switching
+// 2. Fundamental: State Switching (Show/Hide)
 function showPopup(type)
 {
     clickSfx.play();
     overlay.style.display = 'flex';
 
-    if (type === 'aboutme')
-    {
-        content.innerHTML = '<h2>About Me</h2><p>This is some information about me.</p>';
-    }
-
-    else if (type === 'projects')
+    if (type === 'projects')
     {
         content.innerHTML = `
             <h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">MISSION LOG</h1>
             <p style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</p>
         `;
-    }
-
-    else if (type === 'skills')
+    } else if (type === 'skills')
     {
         content.innerHTML = `
             <h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">STEALTH SKILLS</h1>
@@ -50,6 +41,7 @@ function hidePopup()
 
 document.querySelectorAll('.p5-btn').forEach(btn =>
 {
+    // Existing Hover Sound
     btn.addEventListener('mouseenter', () =>
     {
         hoverSfx.currentTime = 0;
@@ -58,7 +50,7 @@ document.querySelectorAll('.p5-btn').forEach(btn =>
         // NEW: Get the style from data-bg and apply to body
         const bgStyle = btn.getAttribute('data-bg');
         document.body.classList.add(`bg-${bgStyle}`);
-    })
+    });
 
     // NEW: Remove the style when mouse leaves
     btn.addEventListener('mouseleave', () =>
@@ -66,4 +58,4 @@ document.querySelectorAll('.p5-btn').forEach(btn =>
         const bgStyle = btn.getAttribute('data-bg');
         document.body.classList.remove(`bg-${bgStyle}`);
     });
-})
+});
