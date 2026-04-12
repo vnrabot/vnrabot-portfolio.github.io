@@ -1,11 +1,3 @@
-body,
-html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%
-}
-
 :root {
     --p5-red: #d30000;
     --p5-black: #000000;
