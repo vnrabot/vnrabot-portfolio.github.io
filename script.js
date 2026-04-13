@@ -1,12 +1,12 @@
+const bgm = document.getElementById('bgm');
+
 const startBGM = () =>
 {
-    const bgm = document.getElementById('bgm');
-    if (bgm)
+    if (bgm && bgm.paused)
     {
         bgm.play().then(() =>
         {
-            window.removeEventListener('click', startBGM);
-            window.removeEventListener('mouseenter', startBGM);
+            console.log("BGM started.");
         }).catch(err =>
         {
             console.log("Waiting for user interaction.");
@@ -14,8 +14,8 @@ const startBGM = () =>
     }
 }
 
-window.addEventListener('click', startBGM);
-window.addEventListener('mouseenter', startBGM);
+window.addEventListener('click', startBGM, { once: true });
+window.addEventListener('mouseenter', startBGM, { once: true });
 
 window.showPopup = function (type)
 {
