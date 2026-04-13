@@ -33,22 +33,30 @@ window.hidePopup = function ()
 document.addEventListener('DOMContentLoaded', () =>
 {
     const hoverSfx = document.getElementById('hover-sfx');
+    const bgm = document.getElementById('bgm');
     const buttons = document.querySelectorAll('.p5-btn');
 
     buttons.forEach(btn =>
     {
         btn.addEventListener('mouseenter', () =>
         {
-            // Sound
-            hoverSfx.currentTime = 0;
-            hoverSfx.play();
+            // FIX: We must define 'bgStyle' here so we can use it below
+            const bgStyle = btn.getAttribute('data-bg');
 
-            bgm.play();
+            // Audio Logic
+            if (hoverSfx)
+            {
+                hoverSfx.currentTime = 0;
+                hoverSfx.play().catch(() => { });
+            }
+            if (bgm) bgm.play().catch(() => { });
 
-            // Background Effect
-            // const bgStyle = btn.getAttribute('data-bg');
-            document.body.className = '';
-            document.body.classList.add('bg-' + style);
+            // Visual Logic
+            document.body.className = ''; // Clear old styles
+            if (bgStyle)
+            {
+                document.body.classList.add('bg-' + bgStyle);
+            }
         });
 
         btn.addEventListener('mouseleave', () =>
