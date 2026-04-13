@@ -4,7 +4,7 @@ const startBGM = () =>
 {
     if (bgm && bgm.paused)
     {
-        bgm.volume = 0.3;
+        bgm.volume = 0.1;
 
         bgm.play().then(() =>
         {
