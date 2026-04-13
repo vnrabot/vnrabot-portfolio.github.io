@@ -81,7 +81,7 @@ body {
     background: rgba(0, 0, 0, 0.85);
 }
 
-.popup-window {
+.popup-content {
     border: 8px solid var(--p5-red);
     transform: rotate (-3deg) skewX(-5deg);
     box-shadow: 20px 20px 0 var(--p5-black);

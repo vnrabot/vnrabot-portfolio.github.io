@@ -1,64 +1,52 @@
 window.showPopup = function (type)
 {
-    const clickSfx = document.getElementById('click-sfx');
+    console.log("Mission Triggered: " + type); // This helps us debug
     const overlay = document.getElementById('popup-overlay');
     const content = document.getElementById('popup-content');
+    const clickSfx = document.getElementById('click-sfx');
 
-    clickSfx.play();
-    overlay.style.display = 'flex';
+    if (clickSfx) clickSfx.play().catch(() => { });
 
-    if (type === 'aboutme')
+    if (overlay) overlay.style.display = 'flex';
+
+    if (type === 'about')
     {
-        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">PHANTOM THIEF</h1>
-                             <span style="font-size:1.5rem; margin-top:20px;">Vincent Rabot. Student, Developer, Rebel.</span>`;
+        content.innerHTML = `<h1 class="popup-title">PHANTOM THIEF</h1><p>Vincent Rabot...</p>`;
     } else if (type === 'projects')
     {
-        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">MISSION LOG</h1>
-                             <span style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</span>`;
+        content.innerHTML = `<h1 class="popup-title">MISSION LOG</h1><p>Operation: Portfolio...</p>`;
     } else if (type === 'skills')
     {
-        content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">STEALTH SKILLS</h1>
-                             <span style="font-size:1.5rem; margin-top:20px;">C#, Unity, Cybersecurity, Full-Stack Dev.</span>`;
+        content.innerHTML = `<h1 class="popup-title">STEALTH SKILLS</h1><p>C#, Unity, Dev...</p>`;
     }
 };
 
 window.hidePopup = function ()
 {
-    document.getElementById('popup-overlay').style.display = 'none';
+    const overlay = document.getElementById('popup-overlay');
+    if (overlay) overlay.style.display = 'none';
 };
 
 // Initialize listeners after DOM is loaded
 document.addEventListener('DOMContentLoaded', () =>
 {
-    const hoverSfx = document.getElementById('hover');
     const buttons = document.querySelectorAll('.p5-btn');
+    const hoverSfx = document.getElementById('hover-sfx');
 
     buttons.forEach(btn =>
     {
         btn.addEventListener('mouseenter', () =>
         {
-            // FIX: We must define 'bgStyle' here so we can use it below
             const bgStyle = btn.getAttribute('data-bg');
 
-            // Audio Logic
             if (hoverSfx)
             {
                 hoverSfx.currentTime = 0;
                 hoverSfx.play().catch(() => { });
             }
 
-            // Visual Logic
-            document.body.className = ''; // Clear old styles
-            if (bgStyle)
-            {
-                document.body.classList.add('bg-' + bgStyle);
-            }
-        });
-
-        btn.addEventListener('mouseleave', () =>
-        {
-            const bgStyle = btn.getAttribute('data-bg');
-            if (bgStyle) document.body.classList.remove(`bg-${bgStyle}`);
+            document.body.className = '';
+            if (bgStyle) document.body.classList.add('bg-' + bgStyle);
         });
     });
 });
