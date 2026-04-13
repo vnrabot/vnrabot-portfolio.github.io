@@ -10,15 +10,15 @@ window.showPopup = function (type)
     if (type === 'aboutme')
     {
         content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">PHANTOM THIEF</h1>
-                             <p style="font-size:1.5rem; margin-top:20px;">Vincent Rabot. Student, Developer, Rebel.</p>`;
+                             <span style="font-size:1.5rem; margin-top:20px;">Vincent Rabot. Student, Developer, Rebel.</span>`;
     } else if (type === 'projects')
     {
         content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">MISSION LOG</h1>
-                             <p style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</p>`;
+                             <span style="font-size:1.5rem; margin-top:20px;">> Operation: Portfolio Site<br>> Status: In Progress...</span>`;
     } else if (type === 'skills')
     {
         content.innerHTML = `<h1 style="background:black; color:white; display:inline-block; padding:5px 20px;">STEALTH SKILLS</h1>
-                             <p style="font-size:1.5rem; margin-top:20px;">C#, Unity, Cybersecurity, Full-Stack Dev.</p>`;
+                             <span style="font-size:1.5rem; margin-top:20px;">C#, Unity, Cybersecurity, Full-Stack Dev.</span>`;
     }
 };
 

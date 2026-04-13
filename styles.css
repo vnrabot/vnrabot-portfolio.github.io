@@ -49,6 +49,19 @@ body {
 }
 
 .p5-btn {
+    display: block;
+    background: var(--p5-white);
+    padding: 10px 60px;
+    margin: 10px;
+    font-size: 2.5rem;
+    border: none;
+    transform: skewX(-20deg) rotate(-2deg);
+    transition: 0.15s;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.close-btn {
     background-color: var(--p5-white);
     transform: skewX(-20deg);
 }
@@ -62,4 +75,14 @@ body {
     width: 60%;
     height: 100vh;
     clip-path: var(--slash-path);
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.popup-window {
+    border: 8px solid var(--p5-red);
+    transform: rotate (-3deg) skewX(-5deg);
+    box-shadow: 20px 20px 0 var(--p5-black);
 }
