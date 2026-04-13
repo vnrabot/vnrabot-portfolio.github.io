@@ -43,9 +43,12 @@ document.addEventListener('DOMContentLoaded', () =>
             hoverSfx.currentTime = 0;
             hoverSfx.play();
 
+            bgm.play();
+
             // Background Effect
-            const bgStyle = btn.getAttribute('data-bg');
-            if (bgStyle) document.body.classList.add(`bg-${bgStyle}`);
+            // const bgStyle = btn.getAttribute('data-bg');
+            document.body.className = '';
+            document.body.classList.add('bg-' + style);
         });
 
         btn.addEventListener('mouseleave', () =>
