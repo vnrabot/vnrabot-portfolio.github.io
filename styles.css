@@ -86,3 +86,10 @@ body {
     transform: rotate (-3deg) skewX(-5deg);
     box-shadow: 20px 20px 0 var(--p5-black);
 }
+
+.glitch-text {
+    letter-spacing: -8px;
+    padding: 10px 40px;
+    border: 4px solid var(--p5-white);
+    box-shadow: 10px 10px 0px var(--p5-red), 20px 20px 0px var(--p5-black);
+}
