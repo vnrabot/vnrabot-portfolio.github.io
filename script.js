@@ -32,7 +32,7 @@ window.hidePopup = function ()
 // Initialize listeners after DOM is loaded
 document.addEventListener('DOMContentLoaded', () =>
 {
-    const hoverSfx = document.getElementById('hover-sfx');
+    const hoverSfx = document.getElementById('hover');
     const bgm = document.getElementById('bgm');
     const buttons = document.querySelectorAll('.p5-btn');
 
