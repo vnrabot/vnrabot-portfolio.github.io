@@ -1,3 +1,22 @@
+const startBGM = () =>
+{
+    const bgm = document.getElementById('bgm');
+    if (bgm)
+    {
+        bgm.play().then(() =>
+        {
+            window.removeEventListener('click', startBGM);
+            window.removeEventListener('mouseenter', startBGM);
+        }).catch(err =>
+        {
+            console.log("Waiting for user interaction.");
+        });
+    }
+}
+
+window.addEventListener('click', startBGM);
+window.addEventListener('mouseenter', startBGM);
+
 window.showPopup = function (type)
 {
     console.log("Mission Triggered: " + type); // This helps us debug
@@ -5,7 +24,7 @@ window.showPopup = function (type)
     const content = document.getElementById('popup-content');
     const clickSfx = document.getElementById('click-sfx');
 
-    if (clickSfx) clickSfx.play().catch(() => { });
+    // if (clickSfx) clickSfx.play().catch(() => { });
 
     if (overlay) overlay.style.display = 'flex';
 
