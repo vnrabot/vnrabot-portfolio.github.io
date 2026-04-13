@@ -70,4 +70,9 @@ document.addEventListener('DOMContentLoaded', () =>
             if (bgStyle) document.body.classList.add('bg-' + bgStyle);
         });
     });
+
+    btn.addEventListener('mouseleave', () =>
+    {
+        document.body.className = '';
+    });
 });
