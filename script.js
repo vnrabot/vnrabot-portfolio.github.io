@@ -2,7 +2,7 @@ const bgm = document.getElementById('bgm');
 
 if (bgm)
 {
-    bgm.volume = 0.5;
+    bgm.volume = 0.1;
 }
 
 const startBGM = () =>
