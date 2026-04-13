@@ -1,14 +1,11 @@
 const bgm = document.getElementById('bgm');
 
-if (bgm)
-{
-    bgm.volume = 0.1;
-}
-
 const startBGM = () =>
 {
     if (bgm && bgm.paused)
     {
+        bgm.volume = 0.1;
+
         bgm.play().then(() =>
         {
             console.log("BGM started.");
