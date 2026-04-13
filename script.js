@@ -31,7 +31,6 @@ window.hidePopup = function ()
 document.addEventListener('DOMContentLoaded', () =>
 {
     const hoverSfx = document.getElementById('hover');
-    const bgm = document.getElementById('bgm');
     const buttons = document.querySelectorAll('.p5-btn');
 
     buttons.forEach(btn =>
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () =>
                 hoverSfx.currentTime = 0;
                 hoverSfx.play().catch(() => { });
             }
-            if (bgm) bgm.play().catch(() => { });
 
             // Visual Logic
             document.body.className = ''; // Clear old styles
