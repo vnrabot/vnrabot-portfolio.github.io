@@ -1,3 +1,5 @@
+const bgm = document.getElementById('bgm');
+
 window.showPopup = function (type)
 {
     const clickSfx = document.getElementById('click-sfx');
