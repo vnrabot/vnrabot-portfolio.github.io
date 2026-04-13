@@ -36,8 +36,9 @@ body {
 }
 
 body[class^="bg-"] .glitch-text {
-    transform: rotate(-5deg) skewX(-12deg) scale(1.02);
-    filter: drop_shadow(2px 0px 0px var(--p5-red));
+    transform: rotate(-6deg) skewX(-15deg) scale(1.05);
+    text-shadow: 4px 0px 0px var(--p5-red), -4px 0px 0px var(--p5-white);
+    box-shadow: 5px 5px 0px var(--p5-red), 10px 10px 0px var(--p5-black);
 }
 
 .p5-container {
