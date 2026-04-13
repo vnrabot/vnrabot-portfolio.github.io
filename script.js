@@ -1,5 +1,10 @@
 const bgm = document.getElementById('bgm');
 
+if (bgm)
+{
+    bgm.volume = 0.5;
+}
+
 const startBGM = () =>
 {
     if (bgm && bgm.paused)
