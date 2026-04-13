@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', () =>
         {
             const bgStyle = btn.getAttribute('data-bg');
 
-            if (hoverSfx)
-            {
-                hoverSfx.currentTime = 0;
-                hoverSfx.play().catch(() => { });
-            }
+            // if (hoverSfx)
+            // {
+            //     hoverSfx.currentTime = 0;
+            //     hoverSfx.play().catch(() => { });
+            // }
 
             document.body.className = '';
             if (bgStyle) document.body.classList.add('bg-' + bgStyle);
