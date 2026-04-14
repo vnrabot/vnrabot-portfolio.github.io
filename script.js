@@ -22,25 +22,25 @@ const infoData = {
 const projectData = {
     gow: {
         title: "God of War: Sons of Sparta",
-        video: "assets/gow.mp4",
+        video: "https://www.youtube.com/embed/eFhOo6NTt70",
         desc: "2D Metroidvania prequel developed with Mega Cat Studios. Explores the Agoge training of Kratos and Deimos in Laconia. First Greek-era entry since 2013, bridging the gap before 'Ascension'",
         stack: ["C#", "Unity", "Gameplay Engineer"]
     },
     fnaf: {
         title: "Five Nights at Freddy's: Into the Pit",
-        video: "assets/fnaf.mp4",
+        video: "https://www.youtube.com/embed/2pTYUVB6-zM",
         desc: "Chronological stealth-horror. Solve temporal puzzles across multiple eras while evading a persistent, evolving threat. High-stakes survival mechanics where player choices impact secondary character outcomes.",
         stack: ["DevOps", "Unity", "C#", "Platform Engineer"]
     },
     wq: {
         title: "WrestleQuest",
-        video: "assets/wq.mp4",
+        video: "https://www.youtube.com/embed/nA2G7ClUyG8",
         desc: "TAG TEAM WITH DESTINY! Pro wrestling and RPG fantasy collide in the ultimate pixel powered adventure. “Macho Man” Randy Savage and tons of other icons offer guidance as you powerbomb your way to glory beyond the ring. This hero’s journey ain’t just an epic quest, it’s WRESTLEQUEST!",
         stack: ["Unity", "C#", "Unity Developer"]
     },
     so: {
         title: "Stressed Out",
-        video: "assets/so.mp4",
+        video: "https://www.youtube.com/embed/nA2G7ClUyG8",
         desc: "Be a college student in the Philippines during the pandemic. Full of stressful and whacky scenarios, enjoy (or rage) as you go through your days as a full-time student stuck at home!",
         stack: ["Unity", "C#", "Programmer"]
     },
@@ -211,6 +211,7 @@ window.showPopup = function (type)
         </div>
     `;
     };
+
 
     window.hidePopup = function ()
     {
