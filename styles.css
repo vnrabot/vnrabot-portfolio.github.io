@@ -422,3 +422,67 @@ body:not([class^="bg-"]) .glitch-text {
     min-width: 80px;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+
+    /* 1. Reset the body to allow scrolling if the content is tall */
+    body {
+        overflow-y: auto;
+        align-items: flex-start;
+        padding: 20px 10px;
+    }
+
+    /* 2. Scale down the Popup Window */
+    .popup-window {
+        width: 95%;
+        min-height: auto;
+        padding: 15px;
+        /* Reduce rotation so it doesn't clip off the screen edges */
+        transform: rotate(-1deg) !important;
+    }
+
+    /* 3. Stack the Mission List and Intel Pane vertically */
+    .mission-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* 4. Adjust the Mission List */
+    .mission-list {
+        width: 100%;
+        max-height: 200px;
+        /* Allow scrolling within the list */
+        overflow-y: auto;
+    }
+
+    .mission-list li {
+        margin-left: 0;
+        /* Remove the "bleed" we added for desktop */
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .mission-list li:hover {
+        transform: translateX(5px) skewX(-2deg);
+        /* Much more subtle */
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        /* Force skills into one column */
+    }
+
+    /* 5. Shrink the Video to fit the phone width */
+    .video-preview {
+        height: 180px;
+    }
+
+    /* 6. Typography adjustments */
+    #proj-title {
+        font-size: 1.5rem;
+    }
+
+    #proj-desc {
+        font-size: 0.9rem;
+    }
+}
