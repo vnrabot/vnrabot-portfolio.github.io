@@ -22,7 +22,7 @@ const infoData = {
 const projectData = {
     gow: {
         title: "God of War: Sons of Sparta",
-        video: "https://www.youtube.com/embed/eFhOo6NTt70",
+        video: "assets/gow.mp4",
         desc: "2D Metroidvania prequel developed with Mega Cat Studios. Explores the Agoge training of Kratos and Deimos in Laconia. First Greek-era entry since 2013, bridging the gap before 'Ascension'",
         stack: ["C#", "Unity", "Gameplay Engineer"]
     },
