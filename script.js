@@ -149,11 +149,11 @@ window.showPopup = function (type)
                     </div>
                     <div class="contact-item">
                         <span class="red-tag">LINKEDIN</span> 
-                        <a href="https://${contact.linkedin}" target="_blank">View Profile</a>
+                        <a href="https://${contact.linkedin}" target="_blank">https://www.linkedin.com/in/vgvrabs</a>
                     </div>
                     <div class="contact-item">
                         <span class="red-tag">GITHUB</span> 
-                        <a href="https://${contact.github}" target="_blank">View Profile</a>
+                        <a href="https://${contact.github}" target="_blank">https://github.com/vnrabot</a>
                     </div>
                 </div>
             </div>
