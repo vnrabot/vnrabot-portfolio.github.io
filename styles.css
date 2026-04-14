@@ -30,15 +30,14 @@ body::before {
 
 body {
     background: var(--p5-black);
-    color: var(--p5-white);
     font-family: 'Impact', sans-serif;
     overflow: hidden;
 }
 
 body[class^="bg-"] .glitch-text {
-    transform: rotate(-6deg) skewX(-15deg) scale(1.05);
-    text-shadow: 4px 0px 0px var(--p5-red), -4px 0px 0px var(--p5-white);
-    box-shadow: 5px 5px 0px var(--p5-red), 10px 10px 0px var(--p5-black);
+    --glitch-tilt: -6deg;
+    --glitch-scale: 1.05;
+    --glitch-shadow: 5px 5px 0px var(--p5-red);
 }
 
 .p5-container {
@@ -108,14 +107,34 @@ body[class^="bg-"] .glitch-text {
     font-size: 8rem;
     font-style: italic;
     text-transform: uppercase;
-    margin-bottom: 40px;
     background: var(--p5-black);
     color: var(--p5-white);
-    padding: 0 30px;
-    transform: rotate(-3deg) skewX(-10deg);
-    box-shadow: 15px 15px 0px var(--p5-red);
-    letter-spacing: -5px;
+    width: fit-content;
+    margin: 0 auto 40px auto;
+    padding: 10px 30px;
+    text-align: center;
+    display: block;
+    letter-spacing: -8px;
+
+    /* REVERT VALUES */
+    transform: rotate(-3deg) skewX(-10deg) scale(1);
+    box-shadow: 12px 12px 0px var(--p5-red), 24px 24px 0px rgba(0, 0, 0, 0.8);
+
+    /* The "Snap" back speed */
     transition: transform 0.1s steps(2);
+}
+
+body[class] .glitch-text {
+    transform: rotate(-6deg) skewX(-15deg) scale(1.05) !important;
+    text-shadow: 4px 0px 0px var(--p5-red), -4px 0px 0px var(--p5-white);
+    box-shadow: 5px 5px 0px var(--p5-red), 10px 10px 0px var(--p5-black);
+}
+
+body:not([class^="bg-"]) .glitch-text {
+    transform: rotate(-3deg) skewX(-10deg) scale(1) !important;
+    text-shadow: none;
+    box-shadow: 12px 12px 0px var(--p5-red), 24px 24px 0px rgba(0, 0, 0, 0.8);
+    transition: all 0.1s steps(2);
 }
 
 @keyframes float-slash {
@@ -130,4 +149,278 @@ body[class^="bg-"] .glitch-text {
     100% {
         transform: scale(1) translateX(0);
     }
+}
+
+@keyframes p5-pop {
+    0% {
+        transform: scale(0.8) rotate(5deg) skewX(10deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(-2deg) skewX(-2deg);
+        opacity: 1;
+    }
+}
+
+.overlay {
+    backdrop-filter: blur(5px);
+    transition: opacity 0.2s steps(2);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-window {
+    background: var(--p5-white);
+    padding: 40px;
+    width: 80%;
+    max-width: 900px;
+    border: 8px solid var(--p5-red);
+    position: relative;
+    transform: rotate(-2deg) skewX(-2deg);
+    box-shadow: 20px 20px 0px var(--p5-black);
+    animation: p5-pop 0.15s steps(2) forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: var(--p5-black);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: rotate(5deg);
+    transition: 0.1s steps(2);
+}
+
+.close-btn:hover {
+    background: var(--p5-red);
+    transform: rotate(0deg) scale(1.1)
+}
+
+.mission-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    height: 450px;
+}
+
+.mission-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.intel-pane {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.video-preview {
+    width: 100%;
+    height: 260px;
+    margin-bottom: 10px;
+    order: -1
+}
+
+.video-preview iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Let's tilt it just a tiny bit for the P5 look */
+    transform: scale(1.02);
+}
+
+.video-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stack-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: -5px;
+    flex-wrap: wrap;
+}
+
+.red-tag {
+    background: var(--p5-red);
+    color: white !important;
+    padding: 5px 12px;
+    font-weight: bold;
+    transform: rotate(-3deg);
+    font-size: 0.9rem;
+    clip-path: polygon(0% 15%, 100% 0%, 95% 100%, 5% 85%);
+}
+
+#video-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #000;
+    border: 4px solid var(--p5-black);
+    overflow: hidden;
+}
+
+#briefing-video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+#proj-title,
+#proj-desc,
+#tech-stack {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#proj-title {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 2px !important;
+    color: var(--p5-black);
+}
+
+#proj-desc {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin-bottom: 8px !important;
+}
+
+.intel-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+.mission-list li {
+    list-style: none;
+    background: transparent;
+    color: var(--p5-black);
+    padding: 15px 15px 15px 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%);
+    transition: all 0.1s steps(2);
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-list li:hover {
+    background: var(--p5-red);
+    color: white;
+    transform: translateX(15px) skewX(-5deg);
+    box-shadow: -5px 0 0 var(--p5-black);
+}
+
+.mission-list li:hover::before {
+    content: "▶";
+    position: absolute;
+    left: 15px;
+    color: var(--p5-white);
+    background: var(--p5-red);
+}
+
+.active-mission {
+    background: var(--p5-red) !important;
+    color: white;
+    transform: translateX(10px);
+    box-shadow: -20px 0 0 var(--p5-red);
+}
+
+.skills.scroll {
+    overflow-y: auto;
+    padding-right: 15px;
+    display: block !important;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.skill-group {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-left: 4px solid var(--p5-black);
+    transform: skewX(-2deg);
+}
+
+.category-header {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.2rem;
+    background: var(--p5-black);
+    color: var(--p5-white);
+    padding: 2px 10px;
+    width: fit-content;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.contact-block {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    transform: skewX(-10deg);
+    transition: 0.1s steps(2);
+}
+
+.contact-item:hover {
+    background: var(--p5-black);
+    color: white;
+}
+
+.contact-item a {
+    color: var(--p5-black);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Impact', sans-serif;
+    letter-spacing: 1px;
+}
+
+.contact-item:hover a {
+    color: var(--p5-white);
+}
+
+.contact-item .red-tag {
+    transform: skewX(10deg);
+    font-size: 0.8rem;
+    min-width: 80px;
+    text-align: center;
 }

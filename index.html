@@ -20,12 +20,19 @@
             </div>
 
             <nav class="menu">
-                <button class="p5-btn" data-bg="shards" onClick="showPopup('aboutme')">ABOUT ME</button>
+                <button class="p5-btn" data-bg="shards" onClick="showPopup('about')">ABOUT ME</button>
                 <button class="p5-btn" data-bg="stripes" onClick="showPopup('projects')">PROJECTS</button>
                 <button class="p5-btn" data-bg="noise" onClick="showPopup('skills')">SKILLS</button>
                 <!-- <button class="p5-btn" data-bg="pulse" onClick="showPopup('contacts')">CONTACT</button> -->
             </nav>
         </main>
+
+        <div id="popup-overlay" class="overlay" onClick="hidePopup()">
+            <div class="popup-window" onClick="event.stopPropagation()">
+                <div id="popup-content"></div>
+                <button class="close-btn" onClick="hidePopup()">CLOSE</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
