@@ -408,7 +408,7 @@ body:not([class^="bg-"]) .glitch-text {
     color: var(--p5-black);
     text-decoration: none;
     font-weight: bold;
-    font-family: 'Impact', sans-serif;
+    font-family: 'KoreanKRSM', sans-serif;
     letter-spacing: 1px;
 }
 
