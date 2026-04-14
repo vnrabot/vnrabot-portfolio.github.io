@@ -8,7 +8,7 @@
 }
 
 @font-face {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'PersonaImpact';
     src: url('fonts/Impact.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -34,7 +34,7 @@ body::before {
 
 body {
     background: var(--p5-black);
-    font-family: 'Impact', sans-serif;
+    font-family: 'PersonaImpact', sans-serif;
     overflow: hidden;
 }
 
