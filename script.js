@@ -40,7 +40,7 @@ const projectData = {
     },
     so: {
         title: "Stressed Out",
-        video: "https://www.youtube.com/embed/nA2G7ClUyG8",
+        video: "https://www.youtube.com/embed/miwb-MI3W8w",
         desc: "Be a college student in the Philippines during the pandemic. Full of stressful and whacky scenarios, enjoy (or rage) as you go through your days as a full-time student stuck at home!",
         stack: ["Unity", "C#", "Programmer"]
     },
