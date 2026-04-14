@@ -474,6 +474,8 @@ body:not([class^="bg-"]) .glitch-text {
 
     /* 5. Shrink the Video to fit the phone width */
     .video-preview {
+        background: url('./assets/loading-glitch.gif') center no-repeat;
+        background-size: cover;
         height: 180px;
     }
 
