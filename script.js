@@ -98,18 +98,18 @@ window.updateBriefing = function (key)
 
 const startBGM = () =>
 {
-    // if (bgm && bgm.paused)
-    // {
-    //     bgm.volume = 0.1;
+    if (bgm && bgm.paused)
+    {
+        bgm.volume = 0.03;
 
-    //     bgm.play().then(() =>
-    //     {
-    //         console.log("BGM started.");
-    //     }).catch(err =>
-    //     {
-    //         console.log("Waiting for user interaction.");
-    //     });
-    // }
+        bgm.play().then(() =>
+        {
+            console.log("BGM started.");
+        }).catch(err =>
+        {
+            console.log("Waiting for user interaction.");
+        });
+    }
 }
 
 window.addEventListener('click', startBGM, { once: true });
