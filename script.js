@@ -28,19 +28,19 @@ const projectData = {
     },
     fnaf: {
         title: "Five Nights at Freddy's: Into the Pit",
-        video: "https://www.youtube.com/embed/2pTYUVB6-zM",
+        video: "assets/fnaf.mp4",
         desc: "Chronological stealth-horror. Solve temporal puzzles across multiple eras while evading a persistent, evolving threat. High-stakes survival mechanics where player choices impact secondary character outcomes.",
         stack: ["DevOps", "Unity", "C#", "Platform Engineer"]
     },
     wq: {
         title: "WrestleQuest",
-        video: "https://www.youtube.com/embed/RXQMkQ71F_M",
+        video: "assets/wq.mp4",
         desc: "TAG TEAM WITH DESTINY! Pro wrestling and RPG fantasy collide in the ultimate pixel powered adventure. “Macho Man” Randy Savage and tons of other icons offer guidance as you powerbomb your way to glory beyond the ring. This hero’s journey ain’t just an epic quest, it’s WRESTLEQUEST!",
         stack: ["Unity", "C#", "Unity Developer"]
     },
     so: {
         title: "Stressed Out",
-        video: "https://www.youtube.com/embed/miwb-MI3W8w",
+        video: "assets/so.mp4",
         desc: "Be a college student in the Philippines during the pandemic. Full of stressful and whacky scenarios, enjoy (or rage) as you go through your days as a full-time student stuck at home!",
         stack: ["Unity", "C#", "Programmer"]
     },
