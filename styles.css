@@ -7,23 +7,27 @@
     --slash-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
 }
 
-/* The navigation menu */
+@font-face {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    src: url('fonts/Impact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 .menu {
     display: flex;
     flex-direction: column;
-    /* Stack buttons vertically */
     align-items: center;
     gap: 10px;
 }
 
-/* The container for our dynamic background effects */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -2;
     transition: opacity 0.1s steps(2);
-    /* Snap on/off instead of a slow fade */
     opacity: 0;
     pointer-events: none;
 }
