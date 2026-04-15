@@ -1,4 +1,4 @@
-const bgm = document.getElementById('bgm');
+// const bgm = document.getElementById('bgm');
 
 const infoData = {
     skills: {
@@ -96,33 +96,56 @@ window.updateBriefing = function (key)
     }
 };
 
-const startBGM = () =>
+const startAudio = () =>
 {
+    const bgm = document.getElementById('bgm');
+    const hover = document.getElementById('hover-sfx');
+    const click = document.getElementById('click-sfx');
+
+    [hover, click].forEach(sfx =>
+    {
+        if (sfx)
+        {
+            sfx.volume = 0.5;
+            sfx.play().then(() =>
+            {
+                sfx.pause();
+                sfx.currentTime;
+            }).catch(() => { });
+        }
+    });
+
     if (bgm && bgm.paused)
     {
         bgm.volume = 0.02;
-
-        bgm.play().then(() =>
-        {
-            console.log("BGM started.");
-        }).catch(err =>
-        {
-            console.log("Waiting for user interaction.");
-        });
+        bgm.play();
     }
 }
+// const startBGM = () =>
+// {
+//     if (bgm && bgm.paused)
+//     {
+//         bgm.volume = 0.02;
 
-window.addEventListener('click', startBGM, { once: true });
-window.addEventListener('mouseenter', startBGM, { once: true });
+//         bgm.play().then(() =>
+//         {
+//             console.log("BGM started.");
+//         }).catch(err =>
+//         {
+//             console.log("Waiting for user interaction.");
+//         });
+//     }
+// }
+
+window.addEventListener('click', startAudio, { once: true });
+window.addEventListener('hover', startAudio, { once: true });
 
 window.showPopup = function (type)
 {
     console.log("Mission Triggered: " + type); // This helps us debug
     const overlay = document.getElementById('popup-overlay');
     const content = document.getElementById('popup-content');
-    const clickSfx = document.getElementById('click-sfx');
 
-    // if (clickSfx) clickSfx.play().catch(() => { });
 
     if (overlay) overlay.style.display = 'flex';
 
@@ -186,7 +209,7 @@ window.showPopup = function (type)
         // WAIT FOR 1 FRAME (approx 16ms-50ms)
         setTimeout(() =>
         {
-            window.updateBriefing('unity');
+            window.updateBriefing('gow');
         }, 50);
 
     } else if (type === 'skills')
@@ -212,25 +235,11 @@ window.showPopup = function (type)
     `;
     };
 
-
-    window.hidePopup = function ()
-    {
-        const overlay = document.getElementById('popup-overlay');
-        const videoContainer = document.querySelector('.video-preview');
-        if (overlay) overlay.style.display = 'none';
-
-        if (videoContainer) videoContainer.innerHTML = "";
-    };
-
     document.querySelectorAll('.mission-list li').forEach(li =>
     {
         li.classList.remove('active-mission');
     })
 
-    if (element)
-    {
-        element.classList.add('active-mission');
-    }
 
     // Initialize listeners after DOM is loaded
     document.addEventListener('DOMContentLoaded', () =>
@@ -261,4 +270,28 @@ window.showPopup = function (type)
         });
 
     });
+}
+
+window.hidePopup = function ()
+{
+    const overlay = document.getElementById('popup-overlay');
+    const videoContainer = document.querySelector('.video-preview');
+    if (overlay) overlay.style.display = 'none';
+
+    if (videoContainer) videoContainer.innerHTML = "";
+};
+
+
+window.playHoverSfx = function ()
+{
+    const sfx = document.getElementById('hover-sfx');
+    sfx.currentTime = 0;
+    sfx.play().catch(e => console.log("Audio blocked until user interaction"));
+};
+
+window.playClickSfx = function ()
+{
+    const sfx = document.getElementById('click-sfx');
+    sfx.currentTime = 0;
+    sfx.play();
 }

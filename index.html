@@ -8,8 +8,8 @@
 
 <html>
 <audio id="bgm" src="assets/bgm.mp3" loop></audio>
-<audio id="hover-sfx" src="assets/hover.mp3"></audio>
-<audio id="click-sfx" src="assets/click.mp3"></audio>
+<audio id="hover-sfx" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+<audio id="click-sfx" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
 <body>
     <div class="red-slash"></div>
@@ -20,9 +20,12 @@
             </div>
 
             <nav class="menu">
-                <button class="p5-btn" data-bg="shards" onClick="showPopup('about')">ABOUT ME</button>
-                <button class="p5-btn" data-bg="stripes" onClick="showPopup('projects')">PROJECTS</button>
-                <button class="p5-btn" data-bg="noise" onClick="showPopup('skills')">SKILLS</button>
+                <button class="p5-btn" onmouseenter="playHoverSfx();"
+                    onClick="showPopup('about'); playClickSfx();">ABOUT ME</button>
+                <button class="p5-btn" onmouseenter="playHoverSfx();"
+                    onClick="showPopup('projects'); playClickSfx();">PROJECTS</button>
+                <button class="p5-btn" onmouseenter="playHoverSfx();"
+                    onClick="showPopup('skills'); playClickSfx();">SKILLS</button>
                 <!-- <button class="p5-btn" data-bg="pulse" onClick="showPopup('contacts')">CONTACT</button> -->
             </nav>
         </main>
